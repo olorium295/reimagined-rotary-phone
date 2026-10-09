@@ -1,0 +1,1249 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f2f1ed">
+    <meta name="description" content="Subh's student portfolio: coding projects, science interests, academic highlights, and ways to connect.">
+    <title>Subh</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            color-scheme: light;
+            --font-body: "DM Sans", sans-serif;
+            --font-display: "Space Grotesk", sans-serif;
+            --space-1: 0.5rem;
+            --space-2: 0.75rem;
+            --space-3: 1rem;
+            --space-4: 1.5rem;
+            --space-5: 2rem;
+            --space-6: 3rem;
+            --space-7: 4.5rem;
+            --space-8: 7rem;
+            --page-width: 1120px;
+            --page-gutter: clamp(1.25rem, 5vw, 4rem);
+            --radius-small: 0.25rem;
+            --radius-large: 0.4rem;
+            --color-bg: #f2f1ed;
+            --color-surface: #e8e7e2;
+            --color-surface-strong: #d9d8d2;
+            --color-text: #242724;
+            --color-muted: #686b67;
+            --color-accent: #b65e3c;
+            --color-accent-strong: #91472e;
+            --color-accent-soft: #ead9d0;
+            --color-border: #d3d2cc;
+            --color-inverse: #f7f5f0;
+            --color-status: #687e70;
+            --color-shadow: rgb(36 39 36 / 10%);
+            --ease-out: cubic-bezier(0.2, 0.75, 0.25, 1);
+        }
+
+        html[data-theme="dark"] {
+            color-scheme: dark;
+            --color-bg: #242624;
+            --color-surface: #303330;
+            --color-surface-strong: #3c403c;
+            --color-text: #efeee9;
+            --color-muted: #b6b8b2;
+            --color-accent: #d48865;
+            --color-accent-strong: #e3a17f;
+            --color-accent-soft: #493a33;
+            --color-border: #454844;
+            --color-inverse: #242624;
+            --color-status: #9bb09f;
+            --color-shadow: rgb(0 0 0 / 22%);
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 6rem;
+        }
+
+        body {
+            min-width: 320px;
+            margin: 0;
+            background: var(--color-bg);
+            color: var(--color-text);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            line-height: 1.65;
+            transition: background-color 220ms ease, color 220ms ease;
+        }
+
+        body,
+        button,
+        a {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button {
+            color: inherit;
+            font: inherit;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        ::selection {
+            background: var(--color-accent);
+            color: var(--color-inverse);
+        }
+
+        .skip-link {
+            position: absolute;
+            z-index: 20;
+            top: 0.75rem;
+            left: 0.75rem;
+            padding: 0.65rem 1rem;
+            transform: translateY(-150%);
+            border-radius: var(--radius-small);
+            background: var(--color-text);
+            color: var(--color-bg);
+        }
+
+        .skip-link:focus {
+            transform: translateY(0);
+        }
+
+        .site-header {
+            position: sticky;
+            z-index: 10;
+            top: 0;
+            border-bottom: 1px solid color-mix(in srgb, var(--color-border) 75%, transparent);
+            background: color-mix(in srgb, var(--color-bg) 91%, transparent);
+            backdrop-filter: blur(16px);
+        }
+
+        .nav-shell {
+            display: flex;
+            width: min(100%, var(--page-width));
+            min-height: 76px;
+            align-items: center;
+            justify-content: space-between;
+            gap: var(--space-4);
+            margin: 0 auto;
+            padding: 0 var(--page-gutter);
+        }
+
+        .wordmark {
+            flex: 0 0 auto;
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 800;
+            letter-spacing: 0;
+        }
+
+        .wordmark span {
+            color: var(--color-accent);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: clamp(0.8rem, 2.5vw, 2rem);
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .nav-links a {
+            display: flex;
+            min-height: 40px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--color-muted);
+            font-size: 0.875rem;
+            font-weight: 600;
+            transition: color 160ms ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a:focus-visible {
+            color: var(--color-accent-strong);
+        }
+
+        .theme-toggle {
+            display: inline-grid;
+            width: 42px;
+            height: 42px;
+            flex: 0 0 auto;
+            place-items: center;
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-small);
+            background: var(--color-surface);
+            cursor: pointer;
+            transition: transform 180ms var(--ease-out), background-color 220ms ease, border-color 220ms ease;
+        }
+
+        .theme-toggle:hover {
+            transform: translateY(-2px);
+        }
+
+        .theme-toggle svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .menu-toggle {
+            display: none;
+            width: 42px;
+            height: 42px;
+            place-items: center;
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-small);
+            background: var(--color-surface);
+            color: var(--color-text);
+            cursor: pointer;
+        }
+
+        .menu-toggle svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .menu-toggle .icon-close,
+        .menu-toggle[aria-expanded="true"] .icon-menu {
+            display: none;
+        }
+
+        .menu-toggle[aria-expanded="true"] .icon-close {
+            display: block;
+        }
+
+        .theme-toggle .icon-sun,
+        html[data-theme="dark"] .theme-toggle .icon-moon {
+            display: none;
+        }
+
+        html[data-theme="dark"] .theme-toggle .icon-sun {
+            display: block;
+        }
+
+        main,
+        .footer-inner {
+            width: min(100%, var(--page-width));
+            margin: 0 auto;
+            padding-right: var(--page-gutter);
+            padding-left: var(--page-gutter);
+        }
+
+        .hero {
+            display: grid;
+            min-height: min(720px, calc(100svh - 76px));
+            grid-template-columns: minmax(0, 1.25fr) minmax(250px, 0.75fr);
+            align-items: center;
+            gap: clamp(2rem, 7vw, 6rem);
+            padding-top: var(--space-7);
+            padding-bottom: var(--space-8);
+        }
+
+        .eyebrow,
+        .section-label {
+            color: var(--color-accent-strong);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .availability {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.55rem;
+            margin-bottom: var(--space-4);
+            color: var(--color-muted);
+            font-size: 0.85rem;
+        }
+
+        .availability::before {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--color-status);
+            box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-status) 18%, transparent);
+            content: "";
+        }
+
+        h1,
+        h2,
+        h3,
+        p {
+            margin-top: 0;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: var(--font-display);
+            letter-spacing: 0;
+        }
+
+        h1 {
+            max-width: 740px;
+            margin-bottom: var(--space-4);
+            font-size: clamp(3.6rem, 8.5vw, 7.25rem);
+            font-weight: 800;
+            line-height: 0.98;
+        }
+
+        h1 span {
+            color: var(--color-accent);
+        }
+
+        .hero-copy {
+            max-width: 540px;
+            margin-bottom: var(--space-5);
+            color: var(--color-muted);
+            font-size: clamp(1.05rem, 1.8vw, 1.2rem);
+        }
+
+        .button-link {
+            display: inline-flex;
+            min-height: 50px;
+            align-items: center;
+            justify-content: center;
+            gap: 0.7rem;
+            padding: 0.75rem 1.2rem;
+            border: 1px solid var(--color-accent-strong);
+            border-radius: var(--radius-small);
+            background: var(--color-accent-strong);
+            color: var(--color-inverse);
+            font-size: 0.9rem;
+            font-weight: 700;
+            transition: transform 180ms var(--ease-out), box-shadow 180ms ease, background-color 220ms ease;
+        }
+
+        .button-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 24px var(--color-shadow);
+        }
+
+        .button-link svg {
+            width: 17px;
+            height: 17px;
+            transition: transform 180ms var(--ease-out);
+        }
+
+        .button-link:hover svg {
+            transform: translate(2px, -2px);
+        }
+
+        .hero-visual {
+            position: relative;
+            width: min(100%, 360px);
+            aspect-ratio: 0.82;
+            justify-self: end;
+            overflow: hidden;
+            border-radius: var(--radius-large);
+            background: var(--color-surface-strong);
+        }
+
+        .hero-visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            filter: saturate(0.72);
+        }
+
+        .hero-visual figcaption {
+            position: absolute;
+            right: 1rem;
+            bottom: 1rem;
+            left: 1rem;
+            padding: 0.65rem 0.85rem;
+            border: 1px solid rgb(255 255 255 / 25%);
+            border-radius: var(--radius-small);
+            background: rgb(28 30 28 / 78%);
+            color: #fff;
+            font-size: 0.78rem;
+            backdrop-filter: blur(12px);
+        }
+
+        .section {
+            padding-top: var(--space-8);
+            padding-bottom: var(--space-8);
+            border-top: 1px solid var(--color-border);
+        }
+
+        .section-heading {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: var(--space-4);
+            margin-bottom: var(--space-6);
+        }
+
+        .section-heading h2 {
+            margin: 0;
+            font-size: clamp(2.1rem, 5vw, 3.5rem);
+            font-weight: 800;
+            line-height: 1.08;
+        }
+
+        .section-heading .section-label {
+            display: block;
+            margin-bottom: var(--space-2);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 0.8fr) minmax(280px, 1.2fr);
+            gap: clamp(2rem, 8vw, 8rem);
+            align-items: start;
+        }
+
+        .about-aside {
+            color: var(--color-muted);
+            font-size: 0.9rem;
+        }
+
+        .about-aside strong {
+            display: block;
+            margin-bottom: 0.2rem;
+            color: var(--color-text);
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+        }
+
+        .about-copy {
+            max-width: 660px;
+            color: var(--color-muted);
+            font-size: clamp(1.1rem, 2vw, 1.3rem);
+            line-height: 1.8;
+        }
+
+        .about-copy p:last-child {
+            margin-bottom: 0;
+        }
+
+        .profile-resources {
+            margin-top: 1.25rem;
+        }
+
+        .profile-resources summary {
+            display: flex;
+            min-height: 44px;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 0.65rem 0.8rem;
+            border: 1px solid var(--color-accent-strong);
+            border-radius: var(--radius-small);
+            background: var(--color-accent-strong);
+            color: var(--color-inverse);
+            font-size: 0.85rem;
+            font-weight: 700;
+            cursor: pointer;
+            list-style: none;
+            transition: filter 160ms ease, transform 160ms ease;
+        }
+
+        .profile-resources summary:hover {
+            filter: brightness(1.08);
+            transform: translateY(-1px);
+        }
+
+        .profile-resources summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .profile-resources summary::after {
+            color: var(--color-inverse);
+            content: "+";
+            font-size: 1.2rem;
+            line-height: 1;
+        }
+
+        .profile-resources[open] summary::after {
+            content: "−";
+        }
+
+        .download-links {
+            display: grid;
+            gap: 0.5rem;
+            padding-top: 0.65rem;
+        }
+
+        .download-links a {
+            padding: 0.65rem 0.8rem;
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-small);
+            color: var(--color-accent-strong);
+            font-size: 0.82rem;
+            font-weight: 700;
+            transition: background-color 160ms ease, border-color 160ms ease;
+        }
+
+        .download-links a:hover {
+            border-color: var(--color-accent);
+            background: var(--color-accent-soft);
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: var(--space-5);
+        }
+
+        .achievement-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: var(--space-5);
+        }
+
+        .achievement-card {
+            min-height: 180px;
+            padding-top: 1rem;
+            border-top: 1px solid var(--color-border);
+        }
+
+        .achievement-card .section-label {
+            display: block;
+            margin-bottom: 1.2rem;
+        }
+
+        .achievement-card h3 {
+            margin-bottom: 0.45rem;
+            font-size: 1.1rem;
+        }
+
+        .achievement-card p {
+            max-width: 330px;
+            margin-bottom: 0;
+            color: var(--color-muted);
+            font-size: 0.9rem;
+        }
+
+        .project-card {
+            min-width: 0;
+        }
+
+        .project-card:first-child {
+            grid-row: span 2;
+        }
+
+        .project-image {
+            position: relative;
+            aspect-ratio: 1.45;
+            overflow: hidden;
+            border-radius: var(--radius-large);
+            background: var(--color-surface);
+        }
+
+        .project-card:first-child .project-image {
+            aspect-ratio: 0.88;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 500ms var(--ease-out), filter 220ms ease;
+            filter: saturate(0.78);
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.035);
+            filter: saturate(1);
+        }
+
+        .project-image .project-number {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            padding: 0.4rem 0.65rem;
+            border-radius: var(--radius-small);
+            background: color-mix(in srgb, var(--color-bg) 86%, transparent);
+            color: var(--color-text);
+            font-size: 0.75rem;
+            font-weight: 700;
+            backdrop-filter: blur(10px);
+        }
+
+        .project-info {
+            display: flex;
+            align-items: start;
+            justify-content: space-between;
+            gap: 1rem;
+            padding-top: 1.15rem;
+        }
+
+        .project-info h3 {
+            margin-bottom: 0.35rem;
+            font-size: clamp(1.15rem, 2vw, 1.45rem);
+            font-weight: 700;
+        }
+
+        .project-info p {
+            max-width: 430px;
+            margin-bottom: 0.85rem;
+            color: var(--color-muted);
+            font-size: 0.9rem;
+        }
+
+        .project-arrow {
+            display: grid;
+            width: 38px;
+            height: 38px;
+            flex: 0 0 auto;
+            place-items: center;
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-small);
+            color: var(--color-accent-strong);
+            transition: transform 180ms var(--ease-out), background-color 180ms ease;
+        }
+
+        .project-card:hover .project-arrow {
+            transform: translate(2px, -2px);
+            background: var(--color-accent-soft);
+        }
+
+        .project-arrow svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .tag-list,
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .tag-list li,
+        .skill-list li {
+            padding: 0.32rem 0.65rem;
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-small);
+            color: var(--color-muted);
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .education-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+            gap: clamp(2.5rem, 8vw, 7rem);
+        }
+
+        .education-item {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 0.2rem 1rem;
+            padding: 1.1rem 0;
+            border-top: 1px solid var(--color-border);
+        }
+
+        .education-item h3 {
+            margin: 0;
+            font-size: 1.05rem;
+            font-weight: 700;
+        }
+
+        .education-item p,
+        .education-item time {
+            margin: 0;
+            color: var(--color-muted);
+            font-size: 0.875rem;
+        }
+
+        .education-item time {
+            grid-row: span 2;
+            grid-column: 2;
+            white-space: nowrap;
+        }
+
+        .skills-column .section-label {
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        .skill-list {
+            gap: 0.65rem;
+        }
+
+        .skill-list li {
+            padding: 0.55rem 0.85rem;
+            background: var(--color-surface);
+            color: var(--color-text);
+            font-size: 0.82rem;
+        }
+
+        .contact-section {
+            padding-bottom: var(--space-7);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: end;
+            gap: var(--space-5);
+        }
+
+        .contact-content h2 {
+            max-width: 660px;
+            margin: 0 0 var(--space-3);
+            font-size: clamp(2.5rem, 7vw, 5.25rem);
+            font-weight: 800;
+            line-height: 1.02;
+        }
+
+        .contact-content p {
+            margin-bottom: 0;
+            color: var(--color-muted);
+        }
+
+        .contact-email {
+            color: var(--color-accent-strong);
+            font-weight: 700;
+            text-decoration: underline;
+            text-decoration-color: color-mix(in srgb, var(--color-accent) 40%, transparent);
+            text-underline-offset: 4px;
+        }
+
+        .email-row {
+            display: inline-flex;
+            min-height: 44px;
+            align-items: center;
+            gap: 0.55rem;
+            margin-top: 0.2rem;
+        }
+
+        .copy-email {
+            display: inline-grid;
+            width: 38px;
+            height: 38px;
+            flex: 0 0 auto;
+            place-items: center;
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-small);
+            background: var(--color-surface);
+            color: var(--color-accent-strong);
+            cursor: pointer;
+            transition: background-color 160ms ease, border-color 160ms ease;
+        }
+
+        .copy-email:hover {
+            border-color: var(--color-accent);
+            background: var(--color-accent-soft);
+        }
+
+        .copy-email svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .copy-feedback {
+            color: var(--color-muted);
+            font-size: 0.78rem;
+        }
+
+        .social-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            min-height: 44px;
+            align-items: center;
+            gap: 0.45rem;
+            padding: 0.55rem 0.8rem;
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-small);
+            color: var(--color-muted);
+            font-size: 0.82rem;
+            font-weight: 600;
+            transition: border-color 160ms ease, color 160ms ease, background-color 160ms ease;
+        }
+
+        .social-links a:hover {
+            border-color: var(--color-accent);
+            background: var(--color-accent-soft);
+            color: var(--color-accent-strong);
+        }
+
+        .social-links svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .social-label {
+            display: inline;
+        }
+
+        .site-footer {
+            border-top: 1px solid var(--color-border);
+        }
+
+        .footer-inner {
+            display: flex;
+            min-height: 78px;
+            align-items: center;
+            justify-content: space-between;
+            gap: var(--space-3);
+            color: var(--color-muted);
+            font-size: 0.8rem;
+        }
+
+        .footer-inner p {
+            margin: 0;
+        }
+
+        :focus-visible {
+            outline: 3px solid var(--color-accent);
+            outline-offset: 4px;
+        }
+
+        @media (max-width: 760px) {
+            :root {
+                --space-8: 5rem;
+            }
+
+            .nav-shell {
+                min-height: 68px;
+                gap: 0.75rem;
+            }
+
+            .nav-links {
+                gap: clamp(0.55rem, 3vw, 1.2rem);
+            }
+
+            .nav-links a {
+                font-size: 0.78rem;
+            }
+
+            .hero {
+                min-height: auto;
+                grid-template-columns: minmax(0, 1fr) minmax(170px, 0.65fr);
+                gap: 1.5rem;
+                padding-top: 5rem;
+                padding-bottom: 5rem;
+            }
+
+            .hero-visual {
+                width: 100%;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .education-grid {
+                gap: 2.5rem;
+            }
+
+            .achievement-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: var(--space-4);
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 540px) {
+            .nav-shell {
+                display: grid;
+                grid-template-columns: minmax(0, 1fr) auto auto;
+                padding-top: 0.65rem;
+                padding-bottom: 0.65rem;
+            }
+
+            .nav-links {
+                display: none;
+                grid-column: 1 / -1;
+                width: 100%;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 0.25rem 0.5rem;
+                padding: 0.65rem 0 0.1rem;
+                border-top: 1px solid var(--color-border);
+            }
+
+            .nav-links.is-open {
+                display: grid;
+            }
+
+            .nav-links a {
+                min-height: 44px;
+                padding: 0.4rem 0.5rem;
+                font-size: 0.88rem;
+            }
+
+            .menu-toggle {
+                display: inline-grid;
+            }
+
+            .social-links a {
+                width: 46px;
+                height: 46px;
+                min-height: 46px;
+                justify-content: center;
+                padding: 0;
+                border-radius: 50%;
+            }
+
+            .social-links svg {
+                width: 19px;
+                height: 19px;
+            }
+
+            .social-label {
+                position: absolute;
+                width: 1px;
+                height: 1px;
+                overflow: hidden;
+                clip-path: inset(50%);
+                white-space: nowrap;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                padding-top: 4rem;
+                padding-bottom: 4rem;
+            }
+
+            .hero-visual {
+                width: min(75%, 280px);
+                aspect-ratio: 1;
+                justify-self: start;
+                border-radius: var(--radius-large);
+            }
+
+            h1 {
+                font-size: clamp(3.5rem, 16vw, 5.3rem);
+            }
+
+            .section-heading {
+                align-items: start;
+                margin-bottom: var(--space-5);
+            }
+
+            .project-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+
+            .project-card:first-child {
+                grid-row: auto;
+            }
+
+            .project-card:first-child .project-image {
+                aspect-ratio: 1.25;
+            }
+
+            .education-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .achievement-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-inner {
+                min-height: 70px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="site-header">
+        <nav class="nav-shell" aria-label="Main navigation">
+            <!-- EDIT HERE: Change your name or initials in the wordmark. -->
+            <a class="wordmark" href="#home" aria-label="Subh, home">subh<span>.</span></a>
+            <ul class="nav-links" id="site-navigation">
+                <li><a href="#about">About</a></li>
+                <li><a href="#work">Work</a></li>
+                <li><a href="#highlights">Highlights</a></li>
+                <li><a href="#learning">Academics</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="theme-toggle" type="button" aria-label="Switch to dark theme" aria-pressed="false" title="Switch theme">
+                <svg class="icon-moon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M20.2 15.2A8.5 8.5 0 0 1 8.8 3.8 8.5 8.5 0 1 0 20.2 15.2Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <svg class="icon-sun" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.8"/>
+                    <path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                </svg>
+            </button>
+            <button class="menu-toggle" type="button" aria-controls="site-navigation" aria-expanded="false" aria-label="Open navigation menu" title="Open navigation menu">
+                <svg class="icon-menu" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                <svg class="icon-close" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </button>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <section class="hero" id="home" aria-labelledby="hero-title">
+            <div class="hero-content">
+                <p class="availability">Student · coding hobbyist · science enthusiast</p>
+                <!-- EDIT HERE: Update your name and intro if needed. -->
+                <h1 id="hero-title">Hi, I'm <span>Subh.</span></h1>
+                <p class="hero-copy">I code because I like making ideas work, and I follow science because I want to know why they work. Currently learning, building, and asking one more question.</p>
+                <a class="button-link" href="#work">
+                    See what I'm building
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+            </div>
+            <figure class="hero-visual">
+                <!-- EDIT HERE: Replace this collaborative coding photo with your own portrait. to be -->
+                <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&amp;fit=crop&amp;w=900&amp;q=85" alt="Students collaborating around a laptop" fetchpriority="high">
+                <figcaption>Build something. Find out why it works.</figcaption>
+            </figure>
+        </section>
+
+        <section class="section" id="about" aria-labelledby="about-title">
+            <div class="section-heading">
+                <div>
+                    <span class="section-label">Off the syllabus</span>
+                    <h2 id="about-title">Curiosity, then code.</h2>
+                </div>
+            </div>
+            <div class="about-grid">
+                <div class="about-aside">
+                    <strong>Student by day. Builder by habit.</strong>
+                    <span>Computing · science · learning by doing</span>
+                    <details class="profile-resources">
+                        <summary>Résumé &amp; academic CV</summary>
+                        <div class="download-links">
+                            <!-- EDIT HERE: Replace the starter downloads with your final documents when ready. -->
+                            <a href="oloriumweb\doc\Resume.pdf" data-document-download="resume">Download résumé template</a>
+                            <a href="oloriumweb\doc\Resume.pdf" data-document-download="cv">Download academic CV template</a>
+                        </div>
+                    </details>
+                </div>
+                <div class="about-copy">
+                    <!-- EDIT HERE: Personalize this bio with your course, interests, and what you are exploring. -->
+                    <p>I'm Subh, a student gets excited by the science behind everyday things. I like breaking a problem into smaller pieces, testing an idea, and learning something new when the first attempt doesn't work.</p>
+                    <p>Outside class, I'm usually exploring a new concept, tinkering with a small coding project, or sharing a curious fact that sent me down a research rabbit hole.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="work" aria-labelledby="work-title">
+            <div class="section-heading">
+                <div>
+                    <span class="section-label">Personal builds &amp; experiments</span>
+                    <h2 id="work-title">Things I'm making.</h2>
+                </div>
+                <span class="eyebrow">01 — 04</span>
+            </div>
+            <div class="project-grid">
+                <!-- EDIT HERE: Replace these starter project ideas with your real work, links, and tools before publishing. -->
+                <article class="project-card">
+                    <a href="https://github.com/olorium295/Orbit-Log" aria-label="View Orbit Log project">
+                        <div class="project-image">
+                            <img src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&amp;fit=crop&amp;w=1200&amp;q=85" alt="Earth viewed from space" loading="lazy">
+                            <span class="project-number">01 / 04</span>
+                        </div>
+                        <div class="project-info">
+                            <div>
+                                <h3>Orbit Log</h3>
+                                <p>A starter idea for tracking sky observations, objects spotted, and questions to research.</p>
+                                <ul class="tag-list" aria-label="Possible tools"><li>Python</li><li>Data</li><li>Astronomy</li></ul>
+                            </div>
+                            <span class="project-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M7 17 17 7M7 7h10v10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                        </div>
+                    </a>
+                </article>
+                <article class="project-card">
+                    <a href="https://github.com/olorium295" aria-label="View Study Stack project">
+                        <div class="project-image">
+                            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&amp;fit=crop&amp;w=1000&amp;q=85" alt="A student working at a laptop" loading="lazy">
+                            <span class="project-number">02 / 04</span>
+                        </div>
+                        <div class="project-info">
+                            <div>
+                                <h3>Study Stack</h3>
+                                <p>A simple planner concept for keeping assignments, revision, and focus sessions in one place.</p>
+                                <ul class="tag-list" aria-label="Possible tools"><li>JavaScript</li><li>HTML &amp; CSS</li><li>UI</li></ul>
+                            </div>
+                            <span class="project-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M7 17 17 7M7 7h10v10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                        </div>
+                    </a>
+                </article>
+                <article class="project-card">
+                    <a href="https://github.com/olorium295" aria-label="View Lab Notes project">
+                        <div class="project-image">
+                            <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&amp;fit=crop&amp;w=1000&amp;q=85" alt="Glass laboratory equipment" loading="lazy">
+                            <span class="project-number">03 / 04</span>
+                        </div>
+                        <div class="project-info">
+                            <div>
+                                <h3>Lab Notes</h3>
+                                <p>A concept for organizing experiment observations, measurements, and the next question to test.</p>
+                                <ul class="tag-list" aria-label="Possible tools"><li>Python</li><li>Charts</li><li>Science</li></ul>
+                            </div>
+                            <span class="project-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M7 17 17 7M7 7h10v10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                        </div>
+                    </a>
+                </article>
+                <article class="project-card">
+                    <a href="https://github.com/" aria-label="View Code Bench project">
+                        <div class="project-image">
+                            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&amp;fit=crop&amp;w=1000&amp;q=85" alt="Code displayed on a computer screen" loading="lazy">
+                            <span class="project-number">04 / 04</span>
+                        </div>
+                        <div class="project-info">
+                            <div>
+                                <h3>Code Bench</h3>
+                                <p>A home for small coding experiments, useful scripts, and ideas worth testing.</p>
+                                <ul class="tag-list" aria-label="Possible tools"><li>JavaScript</li><li>Git</li><li>Problem solving</li></ul>
+                            </div>
+                            <span class="project-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M7 17 17 7M7 7h10v10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                        </div>
+                    </a>
+                </article>
+            </div>
+        </section>
+
+        <section class="section" id="highlights" aria-labelledby="highlights-title">
+            <div class="section-heading">
+                <div>
+                    <span class="section-label">Proof of progress</span>
+                    <h2 id="highlights-title">Highlights &amp; achievements.</h2>
+                </div>
+            </div>
+            <!-- EDIT HERE: Replace these prompts with verified awards, results, research, or leadership. -->
+            <div class="achievement-grid">
+                <article class="achievement-card">
+                    <span class="section-label">01 · Academics</span>
+                    <h3>-</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, sequi.
+
+                    </p>
+                </article>
+                <article class="achievement-card">
+                    <span class="section-label">02 · Building</span>
+                    <h3>milestone</h3>
+                    <p> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolore, dignissimos corrupti. Labore eaque itaque iure.
+                    </p>
+                </article>
+                <article class="achievement-card">
+                    <span class="section-label">03 · Science</span>
+                    <h3>science highlight</h3>
+                    <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, sequi.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <section class="section" id="learning" aria-labelledby="learning-title">
+            <div class="section-heading">
+                <div>
+                    <span class="section-label">School &amp; skills</span>
+                    <h2 id="learning-title">Building the foundations.</h2>
+                </div>
+            </div>
+            <div class="education-grid">
+                <div>
+                    <span class="section-label">Education</span>
+                    <!-- EDIT HERE: Add your real school, program, and expected graduation year. -->
+                    <div class="education-item">
+                        <h3>A.P.S Prayagraj</h3>
+                        <time>2026</time>
+                        <p>Higher Secondary (Science)</p>
+                    </div>
+                    <div class="education-item">
+                        <h3>Currently exploring</h3>
+                        <time>Ongoing</time>
+                        <p>Programming, scientific thinking, and how things work</p>
+                    </div>
+                </div>
+                <div class="skills-column">
+                    <span class="section-label">Tools &amp; strengths</span>
+                    <!-- EDIT HERE: Keep only skills and tools you can confidently discuss. -->
+                    <ul class="skill-list">
+                        <li>Python</li><li>JavaScript</li><li>HTML &amp; CSS</li> <li>ML</li> <li>Robotics</li> <li>Git</li><li>Debugging</li><li>Research</li><li>Data analysis</li><li>Problem solving</li><li>Scientific curiosity</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section contact-section" id="contact" aria-labelledby="contact-title">
+            <div class="contact-content">
+                <div>
+                    <span class="section-label">For friends, mentors &amp; institutions</span>
+                    <h2 id="contact-title">Let's connect.</h2>
+                    <p>Open to learning opportunities, academic programs, collaborations, and good conversations.<br>
+                        <!-- EDIT HERE: Replace with your real email address and mailto link. -->
+                        <span class="email-row">
+                            <a class="contact-email" href="mailto:olor3525@gmail.com?subject=Hello%20Subh">olor3525@gmail.com</a>
+                            <button class="copy-email" type="button" aria-label="Copy email address" title="Copy email address">
+                                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="1.5" stroke="currentColor" stroke-width="1.8"/><path d="M16 8V5.5A1.5 1.5 0 0 0 14.5 4h-9A1.5 1.5 0 0 0 4 5.5v9A1.5 1.5 0 0 0 5.5 16H8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                            </button>
+                            <span class="copy-feedback" role="status" aria-live="polite"></span>
+                        </span>
+                    </p>
+                </div>
+                <div class="social-links" aria-label="Social links">
+                    <!-- EDIT HERE: Replace all social profile URLs with your own. -->
+                    <a href="https://github.com/olorium295/" target="_blank" rel="noreferrer" aria-label="GitHub profile">
+                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .9a11.1 11.1 0 0 0-3.51 21.63c.56.1.76-.24.76-.54v-2.1c-3.1.67-3.76-1.31-3.76-1.31-.51-1.3-1.25-1.65-1.25-1.65-1.02-.7.08-.69.08-.69 1.13.08 1.73 1.16 1.73 1.16 1 1.72 2.62 1.22 3.26.93.1-.72.39-1.22.71-1.5-2.48-.28-5.09-1.24-5.09-5.52 0-1.22.44-2.22 1.16-3-.12-.28-.5-1.42.11-2.96 0 0 .94-.3 3.05 1.15a10.6 10.6 0 0 1 5.56 0c2.12-1.44 3.05-1.15 3.05-1.15.61 1.54.23 2.68.12 2.96.72.78 1.15 1.78 1.15 3 0 4.29-2.62 5.23-5.11 5.51.4.35.76 1.02.76 2.06v3.11c0 .3.2.65.77.54A11.1 11.1 0 0 0 12 .9Z"/></svg>
+                        <span class="social-label">GitHub</span>
+                    </a>
+                    <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer" aria-label="LinkedIn profile">
+                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 2H3.55C2.69 2 2 2.68 2 3.52v16.96c0 .84.69 1.52 1.55 1.52h16.9c.86 0 1.55-.68 1.55-1.52V3.52c0-.84-.69-1.52-1.55-1.52ZM7.93 18.45H4.96V9h2.97v9.45ZM6.45 7.71a1.72 1.72 0 1 1 0-3.44 1.72 1.72 0 0 1 0 3.44Zm12 10.74h-2.97v-4.6c0-1.1-.02-2.51-1.53-2.51-1.53 0-1.77 1.2-1.77 2.43v4.68H9.21V9h2.85v1.29h.04c.4-.75 1.37-1.53 2.82-1.53 3.01 0 3.57 1.98 3.57 4.56v5.13h-.04Z"/></svg>
+                        <span class="social-label">LinkedIn</span>
+                    </a>
+                    <a href="https://www.instagram.com/" target="_blank" rel="noreferrer" aria-label="Instagram profile">
+                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.8" r="1" fill="currentColor"/></svg>
+                        <span class="social-label">Instagram</span>
+                    </a>
+                    <a href="https://www.facebook.com/" target="_blank" rel="noreferrer" aria-label="Facebook profile">
+                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.3 21v-8h2.7l.4-3.1h-3.1v-2c0-.9.3-1.5 1.6-1.5h1.7V3.6c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.1H7.1V13h2.8v8h3.4Z"/></svg>
+                        <span class="social-label">Facebook</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <p>© <span id="current-year">2026</span> Subh</p>
+            <p>Built with curiosity and a few too many tabs open.</p>
+        </div>
+    </footer>
+
+    <script src="portfolio.js" defer></script>
+</body>
+</html>
