@@ -110,7 +110,6 @@
                 ["Profile", "Student, coding hobbyist, and science enthusiast. Interested in learning by building, solving problems, and exploring how technology and science connect."],
                 ["Education", "A.P.S Prayagraj, Higher Secondary (Science), 2026."],
                 ["Selected Projects", "Offline AI Assistant. UI and Backend Developer, It was annoying to train, An Friendly Assistant, and Just a code editor.]"],
-                ["Achievements", "What's that?."],
                 ["Skills", "Bengali, 3D modeling,3D/2D Annimation, and Critical Thinking"],
                 ["Contact", "Email: olor3525@gmail.com · GitHub: https://github.com/olorium295 · Location: Why?"]
             ]
