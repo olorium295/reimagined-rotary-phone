@@ -109,9 +109,9 @@
             sections: [
                 ["Profile", "Student, coding hobbyist, and science enthusiast. Interested in learning by building, solving problems, and exploring how technology and science connect."],
                 ["Education", "A.P.S Prayagraj, Higher Secondary (Science), 2026."],
-                ["Selected Projects", "Offline AI Assistant. UI and Backend Developer, It was annoying to train, An Friendly Assistant, and Just a code editor.]"],
+                ["Selected Projects", "Offline AI Assistant. UI and Backend Developer, and Just a code editor.]"],
                 ["Skills", "Bengali, 3D modeling,3D/2D Annimation, and Critical Thinking"],
-                ["Contact", "Email: olor3525@gmail.com · GitHub: https://github.com/olorium295 · Location: Why?"]
+                ["Contact", "Email: olor3525@gmail.com · GitHub: https://github.com/olorium295 · Location: NA"]
             ]
         },
         cv: {
@@ -122,7 +122,7 @@
                 ["Education", "A.P.S Prayagraj, Higher Secondary (Science), 2026."],
                 ["Research & Science Activities", "Researched on Mutual Inductance an Future of Biofuels how to make them unlimited fuel cheat code."],
                 ["Projects & Technical Work", "Developed Many websites and apps, including an offline AI assistant and a code editor"],
-                ["Awards & Achievements", "Received the 'Young Scientist' Recognition for academic excellence."],
+                ["Awards & Achievements", "Received Recognition for academic excellence."],
                 ["Technical & Research Skills", "Proficient in Python, JavaScript, and data analysis tools."],
                 ["Contact & References", "Email: olor3525@gmail.com · GitHub: https://github.com/olorium295 · References available on request"]
             ]
